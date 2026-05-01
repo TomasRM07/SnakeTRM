@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&family=VT323&display=swap");
+
+:root {
+  --accent: #00ff88;
+  --accent2: #ff006e;
+  --bg-dark: #0a0a0f;
+  --panel-bg: rgba(10, 10, 20, 0.92);
+  --border: rgba(0, 255, 136, 0.3);
+  --text: #e0e0e0;
+  --snake-color: #00ff88;
+  --font-pixel: "Press Start 2P", monospace;
+  --font-display: "Orbitron", sans-serif;
+  --font-retro: "VT323", monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-dark);
+  color: var(--text);
+  font-family: var(--font-display);
+  min-height: 100vh;
+  overflow: hidden;
+  cursor: none;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.08) 2px,
+      rgba(0, 0, 0, 0.08) 4px);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+.btn-primary {
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  padding: 1rem 2.5rem;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  cursor: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  clip-path: polygon(0 0,
+      calc(100% - 12px) 0,
+      100% 12px,
+      100% 100%,
+      12px 100%,
+      0 calc(100% - 12px));
+  text-transform: uppercase;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: translateX(-101%);
+  transition: transform 0.3s;
+  z-index: -1;
+}
+
+.btn-primary:hover {
+  color: #000;
+}
+
+.btn-primary:hover::before {
+  transform: translateX(0);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-back {
+  font-family: var(--font-pixel);
+  font-size: 0.55rem;
+  color: rgba(255, 255, 255, 0.4);
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.5rem 1rem;
+  cursor: none;
+  transition: all 0.2s;
+  letter-spacing: 2px;
+}
+
+.btn-back:hover {
+  color: var(--accent2);
+  border-color: var(--accent2);
+}
+
+.particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 50%;
+  animation: float-up 8s linear infinite;
+  opacity: 0;
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+
+  10% {
+    opacity: 0.6;
+    transform: translateY(-10px) scale(1);
+  }
+
+  90% {
+    opacity: 0.3;
+    transform: translateY(-80vh) scale(0.5);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-90vh) scale(0);
+  }
+}
+
+/* ── Responsive base ── */
+@media (max-width: 650px) {
+  .game-logo {
+    font-size: 1.5rem;
+  }
+
+  .name-container {
+    min-width: unset;
+    width: 90vw;
+    padding: 2rem;
+  }
+
+  #game-canvas {
+    max-width: 95vw;
+    max-height: 60vh;
+  }
+
+  .game-hud {
+    width: 95vw;
+  }
+
+  .menu-layout {
+    grid-template-columns: 1fr;
+    width: 95vw;
+  }
+
+  .menu-right {
+    display: none;
+  }
+}

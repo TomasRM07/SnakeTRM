@@ -1,0 +1,118 @@
+#screen-settings {
+  background: radial-gradient(ellipse at 70% 30%, #100d1a 0%, #000 70%);
+}
+
+.settings-container {
+  width: 820px;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  clip-path: polygon(0 0,
+      calc(100% - 25px) 0,
+      100% 25px,
+      100% 100%,
+      25px 100%,
+      0 calc(100% - 25px));
+  backdrop-filter: blur(30px);
+  padding: 2.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.settings-title {
+  font-family: var(--font-pixel);
+  font-size: 1rem;
+  color: var(--accent);
+  letter-spacing: 3px;
+}
+
+.settings-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.4);
+  cursor: none;
+  transition: all 0.2s;
+  letter-spacing: 2px;
+}
+
+.tab-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(0, 255, 136, 0.07);
+}
+
+.tab-btn:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.settings-section {
+  margin-bottom: 2rem;
+}
+
+.settings-section-title {
+  font-family: var(--font-pixel);
+  font-size: 0.55rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 4px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.settings-section-note {
+  font-family: var(--font-pixel);
+  font-size: 0.45rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 2px;
+  margin-bottom: 0.8rem;
+}
+
+.settings-mode-info {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  background: rgba(0, 255, 136, 0.03);
+  font-family: var(--font-pixel);
+  font-size: 0.45rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 2px;
+  line-height: 2.2;
+}
+
+.settings-audio-note {
+  font-family: var(--font-pixel);
+  font-size: 0.45rem;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 2px;
+  margin-top: 1rem;
+  line-height: 2;
+}

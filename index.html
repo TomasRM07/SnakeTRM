@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snake | AE6-1</title>
+  <link rel="icon" href="images/Logo.png" type="image/png">
+  <link rel="stylesheet" href="css/genericos.css" />
+  <link rel="stylesheet" href="css/cursor.css" />
+  <link rel="stylesheet" href="css/pantalla.css" />
+  <link rel="stylesheet" href="css/ajustes.css" />
+  <link rel="stylesheet" href="css/customizacion.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <div class="cursor"></div>
+
+  <div class="screen" id="screen-name">
+    <div class="name-container">
+      <h1 class="game-logo">SN<span>A</span>KE</h1>
+      <p class="game-subtitle">RETRO EDITION</p>
+
+      <label class="name-label" for="player-name-input">
+        <i class="fa-solid fa-caret-right"></i> Put your nickname
+      </label>
+      <div class="name-input-wrapper">
+        <input id="player-name-input" type="text" maxlength="12" placeholder="Player..." autocomplete="off"
+          spellcheck="false" />
+      </div>
+
+      <div class="color-preview-name" id="color-preview-name">Tip your nickname</div>
+
+      <button class="btn-primary" id="btn-enter">
+        Start the game <i class="fa-solid fa-play"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="screen hidden" id="screen-menu">
+    <div class="menu-layout">
+
+      <div class="menu-left">
+        <div class="menu-player-info">
+          <div class="menu-player-label">ACTIVE PLAYER</div>
+          <div class="menu-player-name" id="menu-player-name">PLAYER</div>
+        </div>
+
+        <h2 class="menu-title">RETRO<br />SNAKE</h2>
+
+        <nav class="menu-items">
+          <button class="menu-item" id="menu-new-game">
+            <i class="fa-solid fa-caret-right"></i> New Game
+          </button>
+          <button class="menu-item" id="menu-settings">
+            <i class="fa-solid fa-caret-right"></i> Settings
+          </button>
+          <button class="menu-item" id="menu-help">
+            <i class="fa-solid fa-caret-right"></i> Help &amp; Controls
+          </button>
+          <button class="menu-item" id="menu-change-name">
+            <i class="fa-solid fa-caret-right"></i> Change Name
+          </button>
+        </nav>
+
+        <div class="menu-highscore-block">
+          <div class="menu-highscore-label">Personal Record</div>
+          <div class="menu-highscore-value" id="menu-highscore">0</div>
+        </div>
+      </div>
+
+      <div class="menu-right">
+        <div class="snake-preview">
+          <canvas id="snake-preview-canvas"></canvas>
+        </div>
+        <div class="menu-controls-hint">
+          WASD / Arrows<br />P &rarr; PAUSE<br />ESC &rarr; MENU
+        </div>
+        <div class="menu-version">v1.0 || AE6-1</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="screen hidden" id="screen-settings">
+    <div class="settings-container">
+
+      <div class="settings-header">
+        <span class="settings-title"><i class="fa-solid fa-gear"></i> Settings</span>
+        <button class="btn-back" id="settings-back">
+          <i class="fa-solid fa-chevron-left"></i> Go Back
+        </button>
+      </div>
+
+      <div class="settings-tabs">
+        <button class="tab-btn active" data-tab="visual">🎨 Visual</button>
+        <button class="tab-btn" data-tab="gameplay">🐍 Gameplay</button>
+        <button class="tab-btn" data-tab="audio">🔊 Audio</button>
+        <button class="tab-btn" data-tab="mode">⚡ Mode</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-visual">
+        <div class="settings-section">
+          <div class="settings-section-title">Stage Background</div>
+          <div class="bg-grid" id="bg-grid"></div>
+        </div>
+        <div class="settings-section">
+          <div class="settings-section-title">Snake Color</div>
+          <p class="settings-section-note">Color also affects your name color in the HUD and menu</p>
+          <div class="color-grid" id="color-grid"></div>
+        </div>
+        <div class="settings-section">
+          <div class="settings-section-title">Fruit Type</div>
+          <div class="fruit-grid" id="fruit-grid"></div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-gameplay">
+        <div class="settings-section">
+          <div class="settings-section-title">Number of Fruits on Screen</div>
+          <div class="number-control-row">
+            <div class="number-control">
+              <button class="num-btn" id="fruit-count-minus">&minus;</button>
+              <div class="num-display" id="fruit-count-display">3</div>
+              <button class="num-btn" id="fruit-count-plus">+</button>
+            </div>
+            <div class="fruit-count-info">
+              Min: 1 &nbsp; Max: 10<br />
+              More fruit = more points but also more chaos!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-audio">
+        <div class="settings-section">
+          <div class="settings-section-title">Sound Effects Volume</div>
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>🔊 SFX</span>
+              <span class="slider-val" id="sfx-val">70%</span>
+            </div>
+            <input type="range" id="sfx-volume" min="0" max="100" value="70" />
+          </div>
+        </div>
+        <div class="settings-section">
+          <div class="settings-section-title">Music Volume</div>
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>🎵 Music</span>
+              <span class="slider-val" id="music-val">40%</span>
+            </div>
+            <input type="range" id="music-volume" min="0" max="100" value="40" />
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-mode">
+        <div class="settings-section">
+          <div class="settings-section-title">Speed &amp; Game Mode</div>
+          <div class="speed-options" id="speed-options"></div>
+          <div class="settings-mode-info">
+            🐢 SLOW &mdash; Perfect for learning<br />
+            🐍 NORMAL &mdash; Standard experience<br />
+            ⚡ FAST &mdash; For experts<br />
+            💀 EXTREME &mdash; No mercy (22 FPS)<br />
+            &infin; INFINITE &mdash; Walk through walls
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="screen hidden" id="screen-game">
+    <div class="game-ui">
+
+      <div class="game-hud">
+        <div class="hud-item">
+          <span class="hud-label">Points</span>
+          <span class="hud-value" id="hud-score">0</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-player" id="hud-player">PLAYER</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-label">Record</span>
+          <span class="hud-value" id="hud-highscore">0</span>
+        </div>
+      </div>
+
+      <canvas id="game-canvas"></canvas>
+
+      <div class="game-controls-hint">WASD / &uarr;&darr;&larr;&rarr; MOVE &nbsp;|&nbsp; P / ESC PAUSE</div>
+    </div>
+
+    <div class="overlay" id="overlay-pause">
+      <div class="overlay-box">
+        <div class="overlay-title">PAUSE</div>
+        <div class="overlay-sub">&mdash; GAME PAUSED &mdash;</div>
+        <div class="overlay-btns">
+          <button class="btn-primary" id="pause-resume">
+            <i class="fa-solid fa-play"></i> Continue
+          </button>
+          <button class="btn-primary btn-danger" id="pause-menu">Menu</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay" id="overlay-gameover">
+      <div class="overlay-box">
+        <div class="overlay-title red">GAME OVER</div>
+        <div class="overlay-score" id="gameover-score">0</div>
+        <div class="overlay-sub">Final Score</div>
+        <div class="overlay-record">
+          Record: <span class="overlay-record-val" id="gameover-hs">0</span>
+        </div>
+        <div class="overlay-btns">
+          <button class="btn-primary" id="go-restart">
+            <i class="fa-solid fa-rotate-right"></i> Retry
+          </button>
+          <button class="btn-primary btn-danger" id="go-menu">Menu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen hidden" id="screen-help">
+    <div class="help-container">
+
+      <div class="settings-header">
+        <span class="settings-title">
+          <i class="fa-solid fa-circle-question"></i> Help &amp; Controls
+        </span>
+        <button class="btn-back" id="help-back">
+          <i class="fa-solid fa-chevron-left"></i> Go Back
+        </button>
+      </div>
+
+      <div class="help-section">
+        <h3>Movement Controls</h3>
+        <div class="controls-grid">
+          <div class="control-row"><span class="key">↑ / W</span><span class="control-desc">Move up</span></div>
+          <div class="control-row"><span class="key">↓ / S</span><span class="control-desc">Move down</span></div>
+          <div class="control-row"><span class="key">← / A</span><span class="control-desc">Move left</span></div>
+          <div class="control-row"><span class="key">→ / D</span><span class="control-desc">Move right</span></div>
+        </div>
+      </div>
+
+      <div class="help-section">
+        <h3>Game Controls</h3>
+        <div class="controls-grid">
+          <div class="control-row"><span class="key">P / ESC</span><span class="control-desc">Pause / Resume</span>
+          </div>
+          <div class="control-row"><span class="key">Enter</span><span class="control-desc">Confirm</span></div>
+        </div>
+      </div>
+
+      <div class="help-section">
+        <h3>Game Rules</h3>
+        <div class="help-rules-text">
+          &mdash; Eat fruit to grow and earn points<br />
+          &mdash; Each fruit eaten = +1 point<br />
+          &mdash; Don't crash into walls (except in Infinite mode)<br />
+          &mdash; Don't bite your own tail<br />
+          &mdash; In Infinite mode you pass through walls<br />
+          &mdash; Speed depends on the selected game mode
+        </div>
+      </div>
+
+      <div class="help-section">
+        <h3>Game Modes</h3>
+        <div class="help-rules-text">
+          🐢 Slow &mdash; 6 fps, ideal for beginners<br />
+          🐍 Normal &mdash; 10 fps, standard experience<br />
+          ⚡ Fast &mdash; 15 fps, for experts<br />
+          💀 Extreme &mdash; 22 fps, no mercy<br />
+          &infin; Infinite &mdash; 10 fps, walk through walls
+        </div>
+      </div>
+
+      <div class="help-section">
+        <h3>Full Documentation (PDF) In Spanish</h3>
+        <a class="pdf-link-btn" href="pdf/controles.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i> Open Manual PDF
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/game.js"></script>
+</body>
+
+</html>
