@@ -1,6 +1,6 @@
 # SNAKE — AE6-1
 
-**URL del proyecto:** SnakeTRM.github.io
+**URL del proyecto:** [SnakeTRM.github.io](https://snake-trm.vercel.app)
 
 Juego clásico de Snake con menú de personalización completo, desarrollado en HTML5 Canvas, CSS3 y JavaScript vanilla.
 
