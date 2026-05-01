@@ -15,8 +15,8 @@ const State = {
 };
 
 // ─── MÚSICA DE FONDO ──────────────────────────────────────────────────────────
-const musicMenu = new Audio('sounds/Menu Sound.mp3');
-const musicGame = new Audio('sounds/Game Sound.mp3');
+const musicMenu = new Audio('Sounds/Menu Sound.mp3');
+const musicGame = new Audio('Sounds/Game Sound.mp3');
 musicMenu.loop = true;
 musicGame.loop = true;
 musicMenu.volume = State.musicVolume;
@@ -42,9 +42,9 @@ function updateMusicVolume() {
 }
 
 // ─── EFECTOS DE SONIDO ────────────────────────────────────────────────────────
-const sfxEat = new Audio('sounds/Eat-sound.mp3');
-const sfxDie = new Audio('sounds/Die-Sound.mp3');
-const sfxClick = new Audio('sounds/Click-Sound.mp3');
+const sfxEat = new Audio('Sounds/Eat-sound.mp3');
+const sfxDie = new Audio('Sounds/Die-Sound.mp3');
+const sfxClick = new Audio('Sounds/Click-Sound.mp3');
 
 function playEat() {
   sfxEat.currentTime = 0;
@@ -66,14 +66,14 @@ function playClick() {
 
 // ─── CUSTOMIZACIÓN ───────────────────────────────────────────────────────────────────
 const BACKGROUNDS = {
-  galaxy: { label: 'GALAXY', file: 'images/backgrounds/Galaxia.png', overlay: 'rgba(0,0,20,0.45)' },
-  snow: { label: 'SNOWY', file: 'images/backgrounds/Nieve.jpg', overlay: 'rgba(0,0,0,0.35)' },
-  grass: { label: 'GRASS', file: 'images/backgrounds/Cesped.avif', overlay: 'rgba(0,0,0,0.40)' },
-  desert: { label: 'DESERT', file: 'images/backgrounds/Desierto.webp', overlay: 'rgba(0,0,0,0.38)' },
-  ocean: { label: 'OCEAN', file: 'images/backgrounds/Oceano.webp', overlay: 'rgba(0,0,20,0.42)' },
-  lava: { label: 'LAVA', file: 'images/backgrounds/Lava.jpg', overlay: 'rgba(0,0,0,0.50)' },
-  forest: { label: 'FOREST', file: 'images/backgrounds/Bosque.avif', overlay: 'rgba(0,0,0,0.45)' },
-  neon: { label: 'NEON', file: 'images/backgrounds/Neon.avif', overlay: 'rgba(0,0,0,0.40)' },
+  galaxy: { label: 'GALAXY', file: 'Images/Backgrounds/Galaxia.png', overlay: 'rgba(0,0,20,0.45)' },
+  snow: { label: 'SNOWY', file: 'Images/Backgrounds/Nieve.jpg', overlay: 'rgba(0,0,0,0.35)' },
+  grass: { label: 'GRASS', file: 'Images/Backgrounds/Cesped.avif', overlay: 'rgba(0,0,0,0.40)' },
+  desert: { label: 'DESERT', file: 'Images/Backgrounds/Desierto.webp', overlay: 'rgba(0,0,0,0.38)' },
+  ocean: { label: 'OCEAN', file: 'Images/Backgrounds/Oceano.webp', overlay: 'rgba(0,0,20,0.42)' },
+  lava: { label: 'LAVA', file: 'Images/Backgrounds/Lava.jpg', overlay: 'rgba(0,0,0,0.50)' },
+  forest: { label: 'FOREST', file: 'Images/Backgrounds/Bosque.avif', overlay: 'rgba(0,0,0,0.45)' },
+  neon: { label: 'NEON', file: 'Images/Backgrounds/Neon.avif', overlay: 'rgba(0,0,0,0.40)' },
 };
 
 const _bgCache = {};

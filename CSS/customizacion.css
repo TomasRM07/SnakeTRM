@@ -38,35 +38,35 @@
 }
 
 .bg-galaxy {
-  background: url('../images/backgrounds/Galaxia.png') center/cover no-repeat;
+  background: url('../Images/Backgrounds/Galaxia.png') center/cover no-repeat;
 }
 
 .bg-snow {
-  background: url('../images/backgrounds/Nieve.jpg') center/cover no-repeat;
+  background: url('../Images/Backgrounds/Nieve.jpg') center/cover no-repeat;
 }
 
 .bg-grass {
-  background: url('../images/backgrounds/Cesped.avif') center/cover no-repeat;
+  background: url('../Images/Backgrounds/Cesped.avif') center/cover no-repeat;
 }
 
 .bg-desert {
-  background: url('../images/backgrounds/Desierto.webp') center/cover no-repeat;
+  background: url('../Images/Backgrounds/Desierto.webp') center/cover no-repeat;
 }
 
 .bg-ocean {
-  background: url('../images/backgrounds/Oceano.webp') center/cover no-repeat;
+  background: url('../Images/Backgrounds/Oceano.webp') center/cover no-repeat;
 }
 
 .bg-lava {
-  background: url('../images/backgrounds/Lava.jpg') center/cover no-repeat;
+  background: url('../Images/Backgrounds/Lava.jpg') center/cover no-repeat;
 }
 
 .bg-forest {
-  background: url('../images/backgrounds/Bosque.avif') center/cover no-repeat;
+  background: url('../Images/Backgrounds/Bosque.avif') center/cover no-repeat;
 }
 
 .bg-neon {
-  background: url('../images/backgrounds/Neon.avif') center/cover no-repeat;
+  background: url('../Images/Backgrounds/Neon.avif') center/cover no-repeat;
 }
 
 .color-grid {
